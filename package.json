@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@antv/g6": "^2.2.6",
+    "@antv/g6-editor": "^1.2.0",
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
