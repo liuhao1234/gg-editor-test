@@ -15,6 +15,11 @@ class GGEditorTest extends Component {
     });
     const itempannel = new G6Editor.Itempannel({
       container: 'itempannel',
+      model:{
+        id: "aaa",
+        shape: "commonShape",
+        label: "原型"
+      }
     });
     const detailpannel = new G6Editor.Detailpannel({
       container: 'detailpannel',
@@ -30,17 +35,25 @@ class GGEditorTest extends Component {
     editor.add(itempannel);
     editor.add(detailpannel);
     editor.add(page);
+    console.log(editor.getCurrentPage())
   }
 
   render() {
     return (
       <Fragment>
-        <div id="minimap" style={{height:200}}></div>       
-        <div id="toolbar" style={{height:200}}></div>       
-        <div id="itempannel" style={{height:200}}></div>    
-        <div id="detailpannel" style={{height:200}}></div>  
-        <div id="contextmenu" style={{height:200}}></div>   
-        <div id="page" style={{height:200}}></div>          
+        <div id="minimap"></div>       
+        <div id="toolbar">
+          <button>复制</button>
+          <button>粘贴</button>
+          <button>自定义命令</button>
+        </div>       
+        <div id="itempannel">
+          <div className="getItem" data-type="node" data-shape="commonShape">圆形</div>
+          <div className="getItem" data-type="node" data-shape="commonShape">自定义节点</div>
+        </div>    
+        <div id="detailpannel"></div>  
+        <div id="contextmenu"></div>   
+        <div id="page"></div>          
       </Fragment>
     );
   }
