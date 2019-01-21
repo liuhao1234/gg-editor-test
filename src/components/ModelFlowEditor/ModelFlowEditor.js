@@ -11,7 +11,12 @@ import Itempannel from '../Itempannel/Itempannel.js';
 import Detailpannel from '../Detailpannel/Detailpannel.js';
 import Editor from '../Editor/Editor.js';
 import Page from '../Page/Page.js';
-import { Checkbox, Input } from 'antd';
+import {
+  Row,
+  Col,
+  Checkbox, 
+  Input 
+} from 'antd';
 import G6Editor from '@antv/g6-editor';
 import './modelFlowEditor.css';
 
@@ -94,7 +99,7 @@ Flow.registerNode('model-card', {
 
 // k 均值聚类
 Flow.registerNode('k-means', {
-  label: 'k 均值聚类',
+  label: 'DB采集',
   color_type: '#1890FF',
   type_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/czNEJAmyDpclFaSucYWB.svg',
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/MXXetJAxlqrbisIuZxDO.svg',
@@ -111,7 +116,7 @@ Flow.registerNode('k-means', {
 
 // 随机森林
 Flow.registerNode('random-forest', {
-  label: '随机森林',
+  label: 'SQL导出',
   color_type: '#9254DE',
   type_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/czNEJAmyDpclFaSucYWB.svg',
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/MXXetJAxlqrbisIuZxDO.svg',
@@ -128,7 +133,7 @@ Flow.registerNode('random-forest', {
 
 // PS-SMART 分类
 Flow.registerNode('PS-SMART', {
-  label: 'PS-SMART 分类',
+  label: 'FTP下载',
   color_type: '#1890FF',
   type_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/czNEJAmyDpclFaSucYWB.svg',
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/MXXetJAxlqrbisIuZxDO.svg',
@@ -148,7 +153,7 @@ Flow.registerNode('PS-SMART', {
 
 // 朴素贝叶斯
 Flow.registerNode('Bayes', {
-  label: '朴素贝叶斯',
+  label: '文件入库',
   color_type: '#9254DE',
   type_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/czNEJAmyDpclFaSucYWB.svg',
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/uZVdwjJGqDooqKLKtvGA.svg',
@@ -165,7 +170,7 @@ Flow.registerNode('Bayes', {
 
 // 读数据表
 Flow.registerNode('read-data-base', {
-  label: '读数据表',
+  label: '执行SQL',
   color_type: '#FAAD14',
   type_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/czNEJAmyDpclFaSucYWB.svg',
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/MXXetJAxlqrbisIuZxDO.svg',
@@ -207,23 +212,108 @@ export default class BaseFlowEditor extends Editor {
     const { curZoom, minZoom, maxZoom, selectedModel, inputingLabel } = this.state;
     const labelInput = (
       <div className="p">
-        名称：
-        <Input
-          size="small"
-          className="input name-input"
-          value = {inputingLabel ? inputingLabel : selectedModel.label}
-          onChange = { ev => {
-            this.setState({
-              inputingLabel: ev.target.value
-            });
-          }}
-          onBlur = { ev => {
-            this.updateGraph('label', ev.target.value);
-            this.setState({
-              inputingLabel: null
-            });
-          }}
-        />
+        <Row>
+          <Col span={24}>
+            <span className="detail-pannel-span">数据源：</span>
+            <Input
+              size="small"
+              className="input name-input"
+              value = {inputingLabel ? inputingLabel : selectedModel.label}
+              onChange = { ev => {
+                this.setState({
+                  inputingLabel: ev.target.value
+                });
+              }}
+              onBlur = { ev => {
+                this.updateGraph('label', ev.target.value);
+                this.setState({
+                  inputingLabel: null
+                });
+              }}
+            />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            <span className="detail-pannel-span">主机IP：</span>
+            <Input
+              size="small"
+              className="input name-input"
+            />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            <span className="detail-pannel-span">端口：</span>
+            <Input
+              size="small"
+              className="input name-input"
+            />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            <span className="detail-pannel-span">用户名：</span>
+            <Input
+              size="small"
+              className="input name-input"
+            />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            <span className="detail-pannel-span">密码：</span>
+            <Input
+              size="small"
+              className="input name-input"
+            />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            <span className="detail-pannel-span">服务器目录：</span>
+            <Input
+              size="small"
+              className="input name-input"
+            />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            <span className="detail-pannel-span">目标目录：</span>
+            <Input
+              size="small"
+              className="input name-input"
+            />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            <span className="detail-pannel-span">匹配模式：</span>
+            <Input
+              size="small"
+              className="input name-input"
+            />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            删除源文件：
+            <Checkbox />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            二进制模式：
+            <Checkbox />
+          </Col>
+        </Row>
+        <Row style={{marginTop:10}}>
+          <Col span={24}>
+            是否需要解压：
+            <Checkbox />
+          </Col>
+        </Row>
       </div>
     );
     return <div className="editor">
@@ -234,19 +324,19 @@ export default class BaseFlowEditor extends Editor {
         <Itempannel editor={this.editor} content={
           <ul>
             <li className="getItem" data-shape="k-means" data-type="node" data-size="170*34">
-              <span className="pannel-type-icon"></span>K 均值聚类
+              <span className="pannel-type-icon"></span>DB采集
             </li>
             <li className="getItem" data-shape="random-forest" data-type="node" data-size="170*34">
-              <span className="pannel-type-icon"></span>随机森林
+              <span className="pannel-type-icon"></span>SQL导出
             </li>
             <li className="getItem" data-shape="PS-SMART" data-type="node" data-size="170*34">
-              <span className="pannel-type-icon"></span>PS-SMART 分类
+              <span className="pannel-type-icon"></span>FTP下载
             </li>
             <li className="getItem" data-shape="read-data-base" data-type="node" data-size="170*34">
-              <span className="pannel-type-icon"></span>读数据表
+              <span className="pannel-type-icon"></span>文件入库
             </li>
             <li className="getItem" data-shape="Bayes" data-type="node" data-size="170*34">
-              <span className="pannel-type-icon"></span>朴素贝叶斯
+              <span className="pannel-type-icon"></span>执行SQL
             </li>
           </ul>
         }/>

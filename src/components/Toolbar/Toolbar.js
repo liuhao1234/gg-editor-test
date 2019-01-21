@@ -39,7 +39,6 @@ class Toolbar extends React.Component {
       <i data-command="multiSelect" className="command iconfont icon-select" title="多选"></i>
       <i data-command="addGroup" className="command iconfont icon-group" title="成组"></i>
       <i data-command="unGroup" className="command iconfont icon-ungroup" title="解组"></i>
-      <a href="https://www.yuque.com/antv/g6-editor"> G6-Editor 文档</a>
     </div>);
   }
 }
