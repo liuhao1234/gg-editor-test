@@ -30,41 +30,45 @@
   margin-right: 8px;
   background: url(https://gw.alipayobjects.com/zos/rmsportal/czNEJAmyDpclFaSucYWB.svg)
 }
+.itempannel .pannel-type-icon.db-get{
+  background: url(../../assets/images/item-icon-getdb.png) no-repeat center center;
+  background-size:cover;
+}
+.itempannel .pannel-type-icon.sql-export{
+  background: url(../../assets/images/item-icon-sqlexport.png) no-repeat center center;
+  background-size:cover;
+}
+.itempannel .pannel-type-icon.ftp-down{
+  background: url(../../assets/images/item-icon-ftpdown.png) no-repeat center center;
+  background-size:cover;
+}
+.itempannel .pannel-type-icon.file-in{
+  background: url(../../assets/images/item-icon-filein.png) no-repeat center center;
+  background-size:cover;
+}
+.itempannel .pannel-type-icon.sql-load{
+  background: url(../../assets/images/item-icon-sqlload.png) no-repeat center center;
+  background-size:cover;
+}
+.itempannel .pannel-type-icon.save-process-load{
+  background: url(../../assets/images/item-icon-saveprocessload.png) no-repeat center center;
+  background-size:cover;
+}
+.itempannel .pannel-type-icon.shell-load{
+  background: url(../../assets/images/item-icon-shellload.png) no-repeat center center;
+  background-size:cover;
+}
+.itempannel .pannel-type-icon.data-tansform{
+  background: url(../../assets/images/item-icon-datatransform.png) no-repeat center center;
+  background-size:cover;
+}
+
 .itempannel li:hover{
   background: white;
   border: 1px solid #CED4D9;
   cursor: move;
 }
-.detailpannel{
-  height: 100%;
-  position: absolute;
-  right: 0px;
-  z-index: 2;
-  background: #F7F9FB;
-  width: 200px;
-  border-left: 1px solid #E6E9ED;
-}
-.detailpannel .pannel{
-  display: none
-}
-.detailpannel .block-containe{
-  padding-top: 20px;
-}
-.detailpannel .input{
-  margin-left: 16px;
-}
-.detailpannel .name-input{
-  width: 150px;
-}
-.detailpannel .width-input{
-  width: 52px;
-}
-.detailpannel .height-input{
-  width: 52px;
-}
-.detailpannel .block-container{
-  padding: 16px 8px;
-}
+
 .bottom-container{
   position: relative;
 }

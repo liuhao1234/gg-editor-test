@@ -57,9 +57,9 @@ class Navigator extends React.Component {
           onChange = { this.sliderChange.bind(this) }
         />
         <Dropdown overlay={menu} >
-          <a className="zoom-dropdown-btn" href="#">
+          <span className="zoom-dropdown-btn">
             {Math.ceil(curZoom * 100)} %<Icon type="down" />
-          </a>
+          </span>
         </Dropdown>
       </div>
     </div>);
@@ -69,8 +69,8 @@ Navigator.propTypes = {
   minZoom: PropTypes.number,
   maxZoom: PropTypes.number,
   curZoom: PropTypes.number,
-  changeZoom: PropTypes.function,
-  createMinimap: PropTypes.function,
+  //changeZoom: PropTypes.function,
+  //createMinimap: PropTypes.function,
   editor: PropTypes.object
 };
 export default Navigator;

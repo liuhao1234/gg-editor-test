@@ -21,6 +21,11 @@ export default class Editor extends React.Component {
   toggleGrid(ev) {
     const editor = this.editor;
     const page = editor.getCurrentPage();
+    // console.log(editor)
+    // console.log(page)
+    // console.log(page.save())
+    // console.log(page.isPage)
+    // console.log(ev)
     if (ev.target.checked) {
       page.showGrid();
     } else {
@@ -28,11 +33,13 @@ export default class Editor extends React.Component {
     }
   }
   updateGraph(key, value) {
+    //console.log(key,value)
     const editor = this.editor;
     editor.executeCommand(() => {
       const page = editor.getCurrentPage();
       const selectedItems = page.getSelected();
       selectedItems.forEach(item => {
+        console.log(item)
         const updateModel = {};
         updateModel[key] = value;
         page.update(item, updateModel);
@@ -46,7 +53,9 @@ export default class Editor extends React.Component {
     const editor = this.editor;
     const pages = editor.getComponentsByType('page');
     pages.forEach(page => {
+      //console.log(page)
       page.on('afteritemselected', ev => {
+        //console.log(ev.item.getModel());
         this.setState({
           selectedModel: ev.item.getModel()
         });
@@ -57,43 +66,5 @@ export default class Editor extends React.Component {
         });
       });
     });
-    // 生成 G6 Editor 编辑器
-    // const editor = new G6Editor();
-    // const minimap = new G6Editor.Minimap({
-    //   container: 'minimap',
-    //   height: 120,
-    //   width: 200
-    // });
-    // const toolbar = new G6Editor.Toolbar({
-    //   container: 'toolbar'
-    // });
-    // const contextmenu = new G6Editor.Contextmenu({
-    //   container: 'contextmenu'
-    // });
-    // const itempannel = new G6Editor.Itempannel({
-    //   container: 'itempannel'
-    // });
-    // const detailpannel = new G6Editor.Detailpannel({
-    //   container: 'detailpannel'
-    // });
-    // const page = this.createPage();
-    // page.on('afteritemselected', ev => {
-    //   this.setState({
-    //     selectedModel: ev.item.getModel()
-    //   });
-    // });
-    // page.on('afterzoom', ev => {
-    //   this.setState({
-    //     curZoom: ev.updateMatrix[0]
-    //   });
-    // });
-    // editor.add(minimap);
-    // editor.add(toolbar);
-    // editor.add(contextmenu);
-    // editor.add(itempannel);
-    // editor.add(detailpannel);
-    // editor.add(page);
-    // this.page = page;
-    // this.editor = editor;
   }
 }

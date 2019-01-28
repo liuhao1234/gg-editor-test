@@ -87,7 +87,7 @@ class Contextmenu extends React.Component {
   }
 }
 Contextmenu.propTypes = {
-  createContextmenu: PropTypes.function,
+  //createContextmenu: PropTypes.function,
   editor: PropTypes.object
 };
 export default Contextmenu;

@@ -2,6 +2,7 @@ import React from 'react';
 import G6Editor from '@antv/g6-editor';
 import PropTypes from 'prop-types';
 import './itempannel.css';
+import Items from './Items';
 
 class Itempannel extends React.Component {
   createItempannel(container) {
@@ -22,12 +23,15 @@ class Itempannel extends React.Component {
   render() {
     return (
     <div className="itempannel" ref={el => { this.itempannelContainer = el; }}>
-    {this.props.content}
+      
+      {
+        this.props.content
+      }
     </div>);
   }
 }
 Itempannel.propTypes = {
-  createItempannel: PropTypes.function,
+  //createItempannel: PropTypes.function,
   editor: PropTypes.object,
   content: PropTypes.node
 };

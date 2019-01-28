@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './page.css';
 class Page extends React.Component {
   createPage(container) {
-    const height = window.innerHeight - 38;
+    const height = window.innerHeight - 42;
     return new G6Editor.Flow({
       graph: {
         container,
@@ -30,7 +30,7 @@ class Page extends React.Component {
   }
 }
 Page.propTypes = {
-  createPage: PropTypes.function,
+  //createPage: PropTypes.function,
   editor: PropTypes.object
 };
 export default Page;

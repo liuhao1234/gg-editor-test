@@ -27,7 +27,7 @@ class Detailpannel extends React.Component {
   }
 }
 Detailpannel.propTypes = {
-  createDetailpannel: PropTypes.function,
+  //createDetailpannel: PropTypes.function,
   editor: PropTypes.object,
   content: PropTypes.node
 };
