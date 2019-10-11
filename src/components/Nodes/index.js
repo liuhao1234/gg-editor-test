@@ -85,6 +85,60 @@ Flow.registerNode('model-card', {
   ]
 });
 
+// 注册开始结束基类
+Flow.registerNode('model-node', {
+  draw(item) {
+    const group = item.getGraphicGroup();
+    const model = item.getModel();
+    const width = 60;
+    const height = 60;
+    const x = -width / 2;
+    const y = -height / 2;
+    const borderRadius = 30;
+    const keyShape = group.addShape('rect', {
+      attrs: {
+        x,
+        y,
+        width,
+        height,
+        radius: borderRadius,
+        fill: 'rgba(255,0,0,0.65)',
+        stroke: 'rgba(255,0,0,1)'
+      }
+    });
+    
+    // 名称文本
+    const label = model.label ? model.label : this.label;
+    group.addShape('text', {
+      attrs: {
+        text: label,
+        x: x+30,
+        y: y+30,
+        fontSize:16,
+        textAlign: 'center',
+        textBaseline: 'middle',
+        fill: 'rgba(255,255,255,1)'
+      }
+    });
+    // 状态 logo
+    // group.addShape('image', {
+    //   attrs: {
+    //     img: this.state_icon_url,
+    //     x: x + 158,
+    //     y: y + 12,
+    //     width: 16,
+    //     height: 16
+    //   }
+    // });
+    return keyShape;
+  },
+  // 设置锚点
+  anchor: [
+    [ 0.5, 0 ], // 上面边的中点
+    [ 0.5, 1 ] // 下边边的中点
+  ]
+});
+
 // DB采集
 Flow.registerNode('DB-GET', {
   label: 'DB采集',
@@ -164,6 +218,9 @@ Flow.registerNode('SQL-LOAD', {
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/MXXetJAxlqrbisIuZxDO.svg',
   // 设置锚点
   anchor: [
+    [ 0.5, 0, {
+      type: 'input'
+    }],
     [ 0.5, 1, {
       type: 'output'
     }]
@@ -178,6 +235,9 @@ Flow.registerNode('SAVE-PROCESS-LOAD', {
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/MXXetJAxlqrbisIuZxDO.svg',
   // 设置锚点
   anchor: [
+    [ 0.5, 0, {
+      type: 'input'
+    }],
     [ 0.5, 1, {
       type: 'output'
     }]
@@ -192,6 +252,9 @@ Flow.registerNode('SHELL-LOAD', {
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/MXXetJAxlqrbisIuZxDO.svg',
   // 设置锚点
   anchor: [
+    [ 0.5, 0, {
+      type: 'input'
+    }],
     [ 0.5, 1, {
       type: 'output'
     }]
@@ -206,10 +269,33 @@ Flow.registerNode('DATA-TRANSFORM', {
   state_icon_url: 'https://gw.alipayobjects.com/zos/rmsportal/MXXetJAxlqrbisIuZxDO.svg',
   // 设置锚点
   anchor: [
+    [ 0.5, 0, {
+      type: 'input'
+    }],
     [ 0.5, 1, {
       type: 'output'
     }]
   ]
 }, 'model-card');
+//开始
+Flow.registerNode('START', {
+  label: '开始',
+  // 设置锚点
+  anchor: [
+    [ 0.5, 1, {
+      type: 'output'
+    }]
+  ]
+}, 'model-node');
+//结束
+Flow.registerNode('END', {
+  label: '结束',
+  // 设置锚点
+  anchor: [
+    [ 0.5, 0, {
+      type: 'input'
+    }]
+  ]
+}, 'model-node');
 
 export default G6Editor;

@@ -11,10 +11,22 @@ const Option = Select.Option;
 const { TextArea } = Input;
 
 export default class DBForm extends Component{
+	constructor(props){
+		super(props);
+		this.itemId = "";
+	}
+	state = {
+		DATATYPE:"",
+		JDBCURL:"",
+		USERNAME:"",
+		PASSWORD:"",
+		SQL:""
+	}
 	render(){
-		const inputingLabel = this.props.inputingLabel;
 		const selectedModel = this.props.selectedModel;
 		const _this = this.props._this;
+		console.log(selectedModel)
+		
 		return <Fragment>
 		    <div className="p">
 		    	<Row style={{marginTop:10}}>
@@ -23,6 +35,13 @@ export default class DBForm extends Component{
 		            <Select
 		              className="input name-input"
 		              size="small"
+		              value={selectedModel.DATATYPE||""}
+		              onChange={(value)=>{
+		              	this.setState({
+		                  DATATYPE: value
+		                });
+						_this.updateGraph('DATATYPE', value);
+		              }}
 		            >
 		              <Option value="MYSQL">MYSQL</Option>
 		              <Option value="GP">GP</Option>
@@ -35,18 +54,12 @@ export default class DBForm extends Component{
 		            <Input
 		              size="small"
 		              className="input name-input"
-		              value = {inputingLabel ? inputingLabel : selectedModel.label}
+		              value = {selectedModel.JDBCURL||""}
 		              onChange = { ev => {
-		                _this.setState({
-		                  inputingLabel: ev.target.value
+		                this.setState({
+		                  JDBCURL: ev.target.value
 		                });
-		              }}
-		              onBlur = { ev => {
-		                _this.updateGraph('label', ev.target.value);
-		                //this.updateGraph('aaa', 'vvv');
-		                _this.setState({
-		                  inputingLabel: null
-		                });
+		                _this.updateGraph('JDBCURL', ev.target.value);
 		              }}
 		            />
 		          </Col>
@@ -56,7 +69,14 @@ export default class DBForm extends Component{
 		            <span className="detail-pannel-span">USERNAME：</span>
 		            <Input
 		              size="small"
+		              value = {selectedModel.USERNAME||""}
 		              className="input name-input"
+		              onChange = { ev => {
+		                this.setState({
+		                  USERNAME: ev.target.value
+		                });
+		                _this.updateGraph('USERNAME', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>
@@ -65,7 +85,14 @@ export default class DBForm extends Component{
 		            <span className="detail-pannel-span">PASSWORD：</span>
 		            <Input
 		              size="small"
+		              value = {selectedModel.PASSWORD||""}
 		              className="input name-input"
+		              onChange = { ev => {
+		                this.setState({
+		                  PASSWORD: ev.target.value
+		                });
+		                _this.updateGraph('PASSWORD', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>
@@ -74,8 +101,15 @@ export default class DBForm extends Component{
 		            <span className="detail-pannel-span">SQL：</span>
 		            <TextArea
 		              size="small"
+		              value = {selectedModel.SQL||""}
 		              className="input name-input"
 		              rows={4}
+		              onChange = { ev => {
+		                this.setState({
+		                  SQL: ev.target.value
+		                });
+		                _this.updateGraph('SQL', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>

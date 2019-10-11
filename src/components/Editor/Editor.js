@@ -21,9 +21,10 @@ export default class Editor extends React.Component {
   toggleGrid(ev) {
     const editor = this.editor;
     const page = editor.getCurrentPage();
-    // console.log(editor)
-    // console.log(page)
-    // console.log(page.save())
+    console.log(editor)
+    console.log(page)
+    console.log(page.save())
+
     // console.log(page.isPage)
     // console.log(ev)
     if (ev.target.checked) {
@@ -39,7 +40,7 @@ export default class Editor extends React.Component {
       const page = editor.getCurrentPage();
       const selectedItems = page.getSelected();
       selectedItems.forEach(item => {
-        console.log(item)
+        //console.log(item)
         const updateModel = {};
         updateModel[key] = value;
         page.update(item, updateModel);
@@ -53,7 +54,22 @@ export default class Editor extends React.Component {
     const editor = this.editor;
     const pages = editor.getComponentsByType('page');
     pages.forEach(page => {
-      //console.log(page)
+      console.log(page)
+      page.read({
+        nodes:[{
+          shape: "START",
+          size: "170*34",
+          type: "node",
+          x: 301,
+          y: 109
+        },{
+          shape: "END",
+          size: "170*34",
+          type: "node",
+          x: 301,
+          y: 509
+        }]
+      })
       page.on('afteritemselected', ev => {
         //console.log(ev.item.getModel());
         this.setState({

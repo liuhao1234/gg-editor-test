@@ -5,7 +5,7 @@ import './page.css';
 class Page extends React.Component {
   createPage(container) {
     const height = window.innerHeight - 42;
-    return new G6Editor.Flow({
+    const Flow = new G6Editor.Flow({
       graph: {
         container,
         height
@@ -14,6 +14,7 @@ class Page extends React.Component {
         grid: true
       }
     });
+    return Flow
   }
   getCreatePage() {
     const { createPage } = this.props;

@@ -44,7 +44,7 @@ export default class Detailform extends Component{
 			}
 
 			default:
-				return "正在开发..."
+				return ""
 		}
 		// if(this.props.selectedModel.shape === "SQL-LOAD"){
 		// 	return  <DBForm 

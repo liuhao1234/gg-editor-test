@@ -23,9 +23,11 @@ class Itempannel extends React.Component {
   render() {
     return (
     <div className="itempannel" ref={el => { this.itempannelContainer = el; }}>
-      
+      <ul>
+        <Items />
+      </ul>
       {
-        this.props.content
+        //this.props.content
       }
     </div>);
   }

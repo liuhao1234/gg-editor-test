@@ -11,10 +11,16 @@ const Option = Select.Option;
 const { TextArea } = Input;
 
 export default class ShellLoadForm extends Component{
+	state = {
+		IPADRESS:"",
+		USERNAME:"",
+		PASSWORD:"",
+		SHELLPATH:""
+	}
 	render(){
-		const inputingLabel = this.props.inputingLabel;
 		const selectedModel = this.props.selectedModel;
 		const _this = this.props._this;
+		console.log(selectedModel)
 		return <Fragment>
 		    <div className="p">
 		    	<Row style={{marginTop:10}}>
@@ -23,6 +29,13 @@ export default class ShellLoadForm extends Component{
 		            <Select
 		              className="input name-input"
 		              size="small"
+		              value={selectedModel.IPADRESS||""}
+		              onChange={(value)=>{
+		              	this.setState({
+		                  IPADRESS: value
+		                });
+						_this.updateGraph('IPADRESS', value);
+		              }}
 		            >
 		              <Option value="MYSQL">MYSQL</Option>
 		              <Option value="GP">GP</Option>
@@ -35,6 +48,13 @@ export default class ShellLoadForm extends Component{
 		            <Input
 		              size="small"
 		              className="input name-input"
+		              value={selectedModel.USERNAME||""}
+		              onChange = { ev => {
+		                this.setState({
+		                  USERNAME: ev.target.value
+		                });
+		                _this.updateGraph('USERNAME', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>
@@ -44,6 +64,13 @@ export default class ShellLoadForm extends Component{
 		            <Input
 		              size="small"
 		              className="input name-input"
+		              value={selectedModel.PASSWORD||""}
+		              onChange = { ev => {
+		                this.setState({
+		                  PASSWORD: ev.target.value
+		                });
+		                _this.updateGraph('PASSWORD', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>
@@ -53,6 +80,13 @@ export default class ShellLoadForm extends Component{
 		            <Input
 		              size="small"
 		              className="input name-input"
+		              value={selectedModel.SHELLPATH||""}
+		              onChange = { ev => {
+		                this.setState({
+		                  SHELLPATH: ev.target.value
+		                });
+		                _this.updateGraph('SHELLPATH', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>

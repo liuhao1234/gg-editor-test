@@ -12,9 +12,9 @@ const { TextArea } = Input;
 
 export default class SaveProcessLoadForm extends Component{
 	render(){
-		const inputingLabel = this.props.inputingLabel;
 		const selectedModel = this.props.selectedModel;
 		const _this = this.props._this;
+		console.log(selectedModel)
 		return <Fragment>
 		    <div className="p">
 		    	<Row style={{marginTop:10}}>
@@ -23,6 +23,13 @@ export default class SaveProcessLoadForm extends Component{
 		            <Select
 		              className="input name-input"
 		              size="small"
+		              value={selectedModel.DATABASETYPE||""}
+		              onChange={(value)=>{
+		              	this.setState({
+		                  DATABASETYPE: value
+		                });
+						_this.updateGraph('DATABASETYPE', value);
+		              }}
 		            >
 		              <Option value="MYSQL">MYSQL</Option>
 		              <Option value="GP">GP</Option>
@@ -35,18 +42,12 @@ export default class SaveProcessLoadForm extends Component{
 		            <Input
 		              size="small"
 		              className="input name-input"
-		              value = {inputingLabel ? inputingLabel : selectedModel.label}
+		              value={selectedModel.JDBCURL||""}
 		              onChange = { ev => {
-		                _this.setState({
-		                  inputingLabel: ev.target.value
+		                this.setState({
+		                  JDBCURL: ev.target.value
 		                });
-		              }}
-		              onBlur = { ev => {
-		                _this.updateGraph('label', ev.target.value);
-		                //this.updateGraph('aaa', 'vvv');
-		                _this.setState({
-		                  inputingLabel: null
-		                });
+		                _this.updateGraph('JDBCURL', ev.target.value);
 		              }}
 		            />
 		          </Col>
@@ -57,6 +58,13 @@ export default class SaveProcessLoadForm extends Component{
 		            <Input
 		              size="small"
 		              className="input name-input"
+		              value={selectedModel.USERNAME||""}
+		              onChange = { ev => {
+		                this.setState({
+		                  USERNAME: ev.target.value
+		                });
+		                _this.updateGraph('USERNAME', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>
@@ -66,6 +74,13 @@ export default class SaveProcessLoadForm extends Component{
 		            <Input
 		              size="small"
 		              className="input name-input"
+		              value={selectedModel.PASSWORD||""}
+		              onChange = { ev => {
+		                this.setState({
+		                  PASSWORD: ev.target.value
+		                });
+		                _this.updateGraph('PASSWORD', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>
@@ -75,6 +90,13 @@ export default class SaveProcessLoadForm extends Component{
 		            <Input
 		              size="small"
 		              className="input name-input"
+		              value={selectedModel.PROCESSNAME||""}
+		              onChange = { ev => {
+		                this.setState({
+		                  PROCESSNAME: ev.target.value
+		                });
+		                _this.updateGraph('PROCESSNAME', ev.target.value);
+		              }}
 		            />
 		          </Col>
 		        </Row>

@@ -16,9 +16,9 @@ const RadioGroup = Radio.Group;
 
 export default class DataTransform extends Component{
 	render(){
-		const inputingLabel = this.props.inputingLabel;
 		const selectedModel = this.props.selectedModel;
 		const _this = this.props._this;
+		console.log(selectedModel)
 		return <Fragment>
 		    <div className="p" style={{marginTop:-16,marginBottom:-16}}>
 		    	
@@ -34,7 +34,13 @@ export default class DataTransform extends Component{
 				            <Select
 				              className="input name-input"
 				              size="small"
-				              value="FTP"
+				              value={selectedModel.DATATYPE_READ||""}
+				              onChange={(value)=>{
+				              	this.setState({
+				                  DATATYPE_READ: value
+				                });
+								_this.updateGraph('DATATYPE_READ', value);
+				              }}
 				            >
 				              <Option value="FTP">FTP</Option>
 				              <Option value="MYSQL">MYSQL</Option>
@@ -45,9 +51,17 @@ export default class DataTransform extends Component{
 				    	<Row style={{marginTop:10}}>
 				          <Col span={24}>
 				            <span className="detail-pannel-span">FTP类型：</span>
-				            <RadioGroup value={1}>
-								<Radio value={1}>FTP</Radio>
-								<Radio value={2}>SFTP</Radio>
+				            <RadioGroup 
+				            	value={selectedModel.FTPTYPE_READ||""}
+				            	onChange={ev=>{
+					              	this.setState({
+					                  FTPTYPE_READ: ev.target.value
+					                });
+									_this.updateGraph('FTPTYPE_READ', ev.target.value);
+					            }}
+				            >
+								<Radio value="FTP">FTP</Radio>
+								<Radio value="SFTP">SFTP</Radio>
 							</RadioGroup>
 				          </Col>
 				        </Row>
@@ -57,6 +71,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.HOST_READ||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  HOST_READ: ev.target.value
+				                });
+				                _this.updateGraph('HOST_READ', ev.target.value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -66,6 +87,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.PORT_READ||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  PORT_READ: ev.target.value
+				                });
+				                _this.updateGraph('PORT_READ', ev.target.value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -75,6 +103,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.USERNAME_READ||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  USERNAME_READ: ev.target.value
+				                });
+				                _this.updateGraph('USERNAME_READ', ev.target.value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -84,6 +119,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.PASSWORD_READ||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  PASSWORD_READ: ev.target.value
+				                });
+				                _this.updateGraph('PASSWORD_READ', ev.target.value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -93,6 +135,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.PATH_READ||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  PATH_READ: ev.target.value
+				                });
+				                _this.updateGraph('PATH_READ', ev.target.value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -102,15 +151,30 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.COLUMN_READ||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  COLUMN_READ: ev.target.value
+				                });
+				                _this.updateGraph('COLUMN_READ', ev.target.value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
 				        <Row style={{marginTop:10}}>
 				          <Col span={24}>
 				            <span className="detail-pannel-span">文件编码：</span>
-				            <RadioGroup>
-								<Radio value={1}>UTF-8</Radio>
-								<Radio value={2}>GBK</Radio>
+				            <RadioGroup
+				            	  value={selectedModel.FILECODE_READ||""}
+					              onChange = { ev => {
+					                this.setState({
+					                  FILECODE_READ: ev.target.value
+					                });
+					                _this.updateGraph('FILECODE_READ', ev.target.value);
+					              }}
+				            >
+								<Radio value="UTF-8">UTF-8</Radio>
+								<Radio value="GBK">GBK</Radio>
 							</RadioGroup>
 				          </Col>
 				        </Row>
@@ -120,6 +184,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.SEPARATOR_READ||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  SEPARATOR_READ: ev.target.value
+				                });
+				                _this.updateGraph('SEPARATOR_READ', ev.target.value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -131,7 +202,13 @@ export default class DataTransform extends Component{
 				            <Select
 				              className="input name-input"
 				              size="small"
-				              value="FTP"
+				              value={selectedModel.DATATYPE_WRITE||""}
+				              onChange = { value => {
+				                this.setState({
+				                  DATATYPE_WRITE: value
+				                });
+				                _this.updateGraph('DATATYPE_WRITE', value);
+				              }}
 				            >
 				              <Option value="FTP">FTP</Option>
 				              <Option value="MYSQL">MYSQL</Option>
@@ -142,7 +219,15 @@ export default class DataTransform extends Component{
 				    	<Row style={{marginTop:10}}>
 				          <Col span={24}>
 				            <span className="detail-pannel-span">FTP类型：</span>
-				            <RadioGroup>
+				            <RadioGroup
+							  value={selectedModel.FTPTYPE_WRITE||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  FTPTYPE_WRITE: ev.target.value
+				                });
+				                _this.updateGraph('FTPTYPE_WRITE', ev.target.value);
+				              }}
+				            >
 								<Radio value={1}>FTP</Radio>
 								<Radio value={2}>SFTP</Radio>
 							</RadioGroup>
@@ -154,6 +239,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.HOST_WRITE||""}
+				              onChange = { value => {
+				                this.setState({
+				                  HOST_WRITE: value
+				                });
+				                _this.updateGraph('HOST_WRITE', value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -163,6 +255,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.PORT_WRITE||""}
+				              onChange = { value => {
+				                this.setState({
+				                  PORT_WRITE: value
+				                });
+				                _this.updateGraph('PORT_WRITE', value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -172,6 +271,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.USERNAME_WRITE||""}
+				              onChange = { value => {
+				                this.setState({
+				                  USERNAME_WRITE: value
+				                });
+				                _this.updateGraph('USERNAME_WRITE', value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -181,6 +287,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.PASSWORD_WRITE||""}
+				              onChange = { value => {
+				                this.setState({
+				                  PASSWORD_WRITE: value
+				                });
+				                _this.updateGraph('PASSWORD_WRITE', value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -190,6 +303,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.PATH_WRITE||""}
+				              onChange = { value => {
+				                this.setState({
+				                  PATH_WRITE: value
+				                });
+				                _this.updateGraph('PATH_WRITE', value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
@@ -199,15 +319,30 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.COLUMN_WRITE||""}
+				              onChange = { value => {
+				                this.setState({
+				                  COLUMN_WRITE: value
+				                });
+				                _this.updateGraph('COLUMN_WRITE', value);
+				              }}
 				            />
 				          </Col>
 				        </Row>
 				        <Row style={{marginTop:10}}>
 				          <Col span={24}>
 				            <span className="detail-pannel-span">文件编码：</span>
-				            <RadioGroup>
-								<Radio value={1}>UTF-8</Radio>
-								<Radio value={2}>GBK</Radio>
+				            <RadioGroup
+				              value={selectedModel.FILECODE_WRITE||""}
+				              onChange = { ev => {
+				                this.setState({
+				                  FILECODE_WRITE: ev.target.value
+				                });
+				                _this.updateGraph('FILECODE_WRITE', ev.target.value);
+				              }}
+				            >
+								<Radio value="UTF-8">UTF-8</Radio>
+								<Radio value="GBK">GBK</Radio>
 							</RadioGroup>
 				          </Col>
 				        </Row>
@@ -217,6 +352,13 @@ export default class DataTransform extends Component{
 				            <Input
 				              size="small"
 				              className="input name-input"
+				              value={selectedModel.SEPARATOR_WRITE||""}
+				              onChange = { value => {
+				                this.setState({
+				                  SEPARATOR_WRITE: value
+				                });
+				                _this.updateGraph('SEPARATOR_WRITE', value);
+				              }}
 				            />
 				          </Col>
 				        </Row>

@@ -44,7 +44,7 @@ export default class BaseFlowEditor extends Editor {
     });
   }
   render() {
-    const { selectedModel, inputingLabel } = this.state;
+    const { selectedModel } = this.state;
     
     return <div className="editor">
       <ToolBar editor={this.editor} />
@@ -74,7 +74,6 @@ export default class BaseFlowEditor extends Editor {
               <div className="block-container">
                 <Detailform 
                   _this = {this}
-                  inputingLabel={inputingLabel} 
                   selectedModel={selectedModel}
                 />
               </div>
